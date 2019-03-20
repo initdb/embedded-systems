@@ -1,1 +1,15 @@
 # embedded-systems
+
+## overview
+
+This this my personal repository to practice with
+atmega 2560 µ-controller.
+
+## installation requirements
+
+the download of the arduino-cmake-ng, required:
+https://github.com/arduino-cmake/Arduino-CMake-NG/wiki/Installation
+
+## Using Sketches
+
+examples of arduino sketch files are located in: 01-einführung
