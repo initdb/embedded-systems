@@ -7,8 +7,10 @@ atmega 2560 µ-controller.
 
 ## Installation Requirements
 
-the download of the arduino-cmake-ng, required:
+download of the arduino-cmake-ng is required:
 https://github.com/arduino-cmake/Arduino-CMake-NG/wiki/Installation
+
+Don't forget to manually set the -DCMAKE_TOOLCHAIN_FILE=C:\Users\..
 
 ## Using Sketches
 
