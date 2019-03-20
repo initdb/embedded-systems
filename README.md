@@ -1,11 +1,11 @@
-# embedded-systems
+# Embedded-Systems
 
-## overview
+## Overview
 
 This this my personal repository to practice with
 atmega 2560 µ-controller.
 
-## installation requirements
+## Installation Requirements
 
 the download of the arduino-cmake-ng, required:
 https://github.com/arduino-cmake/Arduino-CMake-NG/wiki/Installation
