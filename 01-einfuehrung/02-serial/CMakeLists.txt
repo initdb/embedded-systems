@@ -1,8 +1,14 @@
 cmake_minimum_required(VERSION 3.8.2)
 
-project(Sketch)
+project(serial_com)
 
-arduino_cmake_project(Sketch BOARD_NAME nano BOARD_CPU atmega328)
+arduino_cmake_project(${PROJECT_NAME} BOARD_NAME mega BOARD_CPU atmega2560)
 
-add_arduino_executable(Sketch)
-target_sketches(Sketch sketch1.ino sketch2.pde)
+# Call a framework utility function, passing it information about the hardware board that will be used - This function returns a structure known only to the framework
+get_board_id(board_id mega atmega2560)
+
+add_arduino_executable(${PROJECT_NAME})
+target_sketches(${PROJECT_NAME} serial_com.ino)
+
+# Upload the created target through a connected Serial Port (Where your board is connected to)
+set_target_upload_port(${PROJECT_NAME} COM12)

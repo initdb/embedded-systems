@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.8.2)
 
-project(Sketch)
+project(toggle_led)
 
-arduino_cmake_project(Sketch BOARD_NAME mega BOARD_CPU atmega2560)
+arduino_cmake_project(${PROJECT_NAME} BOARD_NAME mega BOARD_CPU atmega2560)
 
 # Call a framework utility function, passing it information about the hardware board that will be used - This function returns a structure known only to the framework
 get_board_id(board_id mega atmega2560)
 
-add_arduino_executable(toggle_led)
-target_sketches(toggle_led toggle_led.ino)
+add_arduino_executable(${PROJECT_NAME})
+target_sketches(${PROJECT_NAME} toggle_led.ino)
 
 # Upload the created target through a connected Serial Port (Where your board is connected to)
-set_target_upload_port(toggle_led COM12)
+set_target_upload_port(${PROJECT_NAME} COM12)
