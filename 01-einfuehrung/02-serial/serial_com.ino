@@ -1,25 +1,23 @@
-String input;
-
 void setup() {
-    Serial.begin(9600); // opens serial port, sets data rate to 9600 bps
+    Serial1.begin(9600); // opens serial port, sets data rate to 9600 bps
 }
 
 void loop() {
     // empty
 }
 
-void serialEvent() {
+void serialEvent1() {
     // check if something is there
-    if (Serial.available() > 0) {
+    if (Serial1.available() > 0) {
         // consume data regardless of input
-        input = Serial.readString();
+        input = Serial1.readString();
 
         if (input.length() == 4) {
-            Serial.print("valid input: ");
-            Serial.println(input);
+            Serial1.print("valid input: ");
+            Serial1.println(input);
         } else {
-            Serial.print("discarded: ");
-            Serial.println(input);
+            Serial1.print("discarded: ");
+            Serial1.println(input);
         }
     }
 }
