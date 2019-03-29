@@ -2,3 +2,4 @@
 /*/*/.idea/
 /*/*/cmake-build*/
 /*/cmake-build*/
+/*/0[1-2]*/*.cpp
