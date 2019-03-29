@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8.2)
 
-project(toggle_led)
+project(toggle_led_fancy)
 
 arduino_cmake_project(${PROJECT_NAME} BOARD_NAME mega BOARD_CPU atmega2560)
 
@@ -8,7 +8,7 @@ arduino_cmake_project(${PROJECT_NAME} BOARD_NAME mega BOARD_CPU atmega2560)
 get_board_id(board_id mega atmega2560)
 
 add_arduino_executable(${PROJECT_NAME})
-target_sketches(${PROJECT_NAME} toggle_led.ino)
+target_sketches(${PROJECT_NAME} toggle_led_fancy.ino)
 
 # Upload the created target through a connected Serial Port (Where your board is connected to)
 set_target_upload_port(${PROJECT_NAME} COM12)
