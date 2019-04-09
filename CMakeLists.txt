@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(01-einfuehrung)
 add_subdirectory(02-digio)
+add_subdirectory(03-interrupts)

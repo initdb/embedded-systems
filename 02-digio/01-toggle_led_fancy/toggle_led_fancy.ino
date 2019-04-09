@@ -1,5 +1,3 @@
-#include <util/delay.h> // for _delay_ms()
-
 //int ledPin = 26;        // LED connected to digital pin 13
 //int inPin = 22;
 
