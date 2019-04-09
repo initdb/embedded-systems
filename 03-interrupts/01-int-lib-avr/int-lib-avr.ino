@@ -1,17 +1,16 @@
-int count = 0;
+int counter = 0;
 
 void setup() {
     Serial1.begin(9600);
     pinMode(22, INPUT);
+    Serial1.println("Hello");
 }
+
 void loop() {
-    if (digitalRead(22)) {
+    if (digitalRead(22) == HIGH)
+        counter++;
 
-        while (!digitalRead(22)) {
-        }
-        count++;
-
-        delay(100);
-    }
-    Serial1.println(count);
+    Serial1.println("Zaehlerstand: ");
+    Serial1.println(counter);
+    delay(3000);
 }
