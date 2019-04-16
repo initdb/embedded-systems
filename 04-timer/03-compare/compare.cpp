@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 const uint8_t led_pin = 24;
-bool led_state = false;
+volatile bool led_state = false;
 
 void setup() {
     pinMode(led_pin, OUTPUT);
@@ -9,20 +9,28 @@ void setup() {
     TCCR4A = 0x00;
     TCCR4B = 0x00;
 
-    // set prescaler to 1024
-    TCCR4B |= (1 << CS42) | (0 << CS41) | (1 << CS40);
+    // set Clear Timer on Compare Match (CTC)
+    TCCR4A &= ~((1 << WGM41) | (1 << WGM40));
+    TCCR4B |= (1 << WGM43) | (1 << WGM42);
+
+    // set prescaler to 256
+    TCCR4B |= (1 << CS42) | (0 << CS41) | (0 << CS40);
 
     // activate timer interrupt
     TIMSK4 |= (1 << ICIE4) | (1 << TOIE4);
 
+    // enable global interrupts
     sei();
+
+    // configure Output Compare Register 4 A
+    OCR4A = 31250;
 }
 
 void loop() {
     // do nothing
 }
 
-ISR(TIMER4_OVF_vect) {
+ISR(TIMER4_COMPA_vect) {
     // toggle led
     if(led_state) {
         led_state = false;
