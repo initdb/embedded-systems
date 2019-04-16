@@ -9,15 +9,17 @@ void setup() {
     TCCR4A = 0x00;
     TCCR4B = 0x00;
 
+    // init counter value
+    TCNT4 = 0;
+
     // set Clear Timer on Compare Match (CTC)
-    TCCR4A &= ~((1 << WGM41) | (1 << WGM40));
-    TCCR4B |= (1 << WGM43) | (1 << WGM42);
+    TCCR4B |= (1 << WGM42);
 
     // set prescaler to 256
     TCCR4B |= (1 << CS42) | (0 << CS41) | (0 << CS40);
 
     // activate timer interrupt
-    TIMSK4 |= (1 << ICIE4) | (1 << TOIE4);
+    TIMSK4 |= (1 << ICIE4) | (1 << OCIE4A);
 
     // enable global interrupts
     sei();
