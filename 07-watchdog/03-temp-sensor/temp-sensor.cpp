@@ -16,7 +16,7 @@ void loop() {
     // wait until conversion is finished, see manual p286
     unsigned int read = ADCL + 256 * ADCH;
     // read analog value, first LOW then HIGH
-    double result = 5.0 * read / 1024.0;
+    double result = 2.56 * read / 1024.0;
     Serial1.print(result);
     Serial1.print(" Volt, ");
     double celsius = 0.25 * read - 50;
