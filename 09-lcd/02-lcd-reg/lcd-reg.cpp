@@ -1,10 +1,8 @@
 #include "Arduino.h"
-#include <LiquidCrystal.h>
 
 #define RS 12		// controls RS pin of LCD (digital pin 12)
 #define E  11		// controls Enable pin to LCD (digital pin 11)
 // Note: Not need to control RW pin: it's set to GND by hardware since we always write and never read
-
 
 void enablePulse() {
     digitalWrite(E, LOW);
@@ -64,24 +62,26 @@ void setup()
     enablePulse();
     delayMicroseconds(50);
 
-    //finally, set to 4-bit interface: (0 0 0 0 1 1)
+    //finally, set to 4-bit interface: (0 0 0 0 1 0)
     PORTC = (0x02 << 4);
     enablePulse();
 
-    // TODO: Function Set, 4-bit, 2 line mode, 5x8 dots
+    // Function Set, 4-bit, 2 line mode, 5x8 dots: (0 0 1 0 1 0 0 0)
+    writeInstruction((0x0a<<2));
 
-    // TODO: Return Home, set cursor to beginning
+
+    // Return Home, set cursor to beginning: (0 0 0 0 0 0 1 0)
+    writeInstruction(0x02);
 
     delayMicroseconds(2500);
 
-    // TODO: Entry Mode Set, increment cursor, no display shift
+    // Entry Mode Set, increment cursor, no display shift: (0 0 0 0 0 1 1 0)
+    writeInstruction((0x03<<1));
 
     // clear display: 0x01
     writeInstruction(0x01);
     delayMicroseconds(300);
-
-
-
+    delay(50);
 }
 
 void loop()
@@ -89,13 +89,23 @@ void loop()
     // set cursor to beginning if first line:  command 0x80  (DDRAM address 0x00, see p11 of manual)
     writeInstruction(0x80);
     char line1[] = {"Embedded Systems  "};
-    // TODO: Write line 1
+    // Write line 1
+    for(int8_t i = 0; i < sizeof(line1)-1; i++) {
+        writeData(line1[i]);
+        delay(50);
+    }
+    delay(1000);
 
     // set cursor to beginning of 2nd line line: command 0xC0 (DDRAM address 0x40, see p11 of manual)
     writeInstruction(0xC0);
     char line2[] = {"macht Spass"};
     // TODO: Write line 2
-
-
-
+    for(int8_t i = 0; i < sizeof(line2)-1; i++) {
+        writeData(line2[i]);
+        delay(50);
+    }
+    delay(3000);
+    // clear
+    writeInstruction(0x01);
+    delay(500);
 }
