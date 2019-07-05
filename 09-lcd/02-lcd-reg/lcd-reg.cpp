@@ -99,7 +99,7 @@ void loop()
     // set cursor to beginning of 2nd line line: command 0xC0 (DDRAM address 0x40, see p11 of manual)
     writeInstruction(0xC0);
     char line2[] = {"macht Spass"};
-    // TODO: Write line 2
+    // Write line 2
     for(int8_t i = 0; i < sizeof(line2)-1; i++) {
         writeData(line2[i]);
         delay(50);

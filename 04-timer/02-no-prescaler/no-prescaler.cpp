@@ -1,12 +1,12 @@
 #include <Arduino.h>
 
-const uint8_t led_pin = 24;
+const uint8_t ledPin = 24;
 volatile bool led_state = false;
 volatile uint16_t counter = 0;
 const uint16_t max_counter = 122; // 122.95
 
 void setup() {
-    pinMode(led_pin, OUTPUT);
+    pinMode(ledPin, OUTPUT);
     // just in case, set it to 0x00
     TCCR4A = 0x00;
     TCCR4B = 0x00;
@@ -34,7 +34,7 @@ ISR(TIMER4_OVF_vect) {
             led_state = true;
         }
 
-        digitalWrite(led_pin, led_state);
+        digitalWrite(ledPin, led_state);
 
         counter = 0; // reset counter
     } else {

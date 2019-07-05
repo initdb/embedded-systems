@@ -1,7 +1,5 @@
 #include "Arduino.h"
 
-int an_in = 2;
-
 void setup() {
     Serial1.begin(9600);
 

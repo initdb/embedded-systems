@@ -1,3 +1,6 @@
 add_subdirectory(01-einfuehrung)
 add_subdirectory(02-dig-io)
 add_subdirectory(03-interrupts)
+add_subdirectory(04-timer)
+add_subdirectory(05-pwm)
+add_subdirectory(06-analog-io)
